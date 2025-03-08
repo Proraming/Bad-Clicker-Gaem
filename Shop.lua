@@ -15,7 +15,6 @@ function FransShop.Load()
 
     Basic_Cost_Lable = (UIElements.Label:new("Cost:" .. basic_cost, {75, 195}, {0, 0}, {0.3, 1, 0.3}))
     Shop:AddElement(Basic_Cost_Lable)
-
     Swarm_Cost_Lable = (UIElements.Label:new("Cost:" .. swarm_cost, {75, 350}, {0, 0}, {0.3, 1, 0.3}))
     Shop:AddElement(Swarm_Cost_Lable)
     
@@ -24,7 +23,6 @@ function FransShop.Load()
     Shop:AddElement(Buyclickerpower)
 
     BasicTooltip = UIElements.Label:new("    An upgrade that\n '   '", {280, 100}, {0, 0}, {0.3, 1, 0.3})
-    Shop:AddElement(BasicTooltip)
     
     SwarmImage = UIElements.Image:new(love.graphics.newImage("swarm.png"), {-5, 200}, {1/12.5, 1/12.5})
     BuySwarm = UIElements.Imagebutton:new(SwarmImage)
@@ -47,26 +45,30 @@ function FransShop.Load()
 
     MacWheelCost = 100
 
-    MacPointerIcon = UIElements.Image:new(love.graphics.newImage("Wheel.png"), {25, 380}, {0.3, 0.3})
-    MacPointer = UIElements.Imagebutton:new(MacPointerIcon)
-    Shop:AddElement(MacPointer)
+    WheelIcon = UIElements.Image:new(love.graphics.newImage("Wheel.png"), {200, 75}, {0.25, 0.25})
+    MacWheel = UIElements.Imagebutton:new(WheelIcon)
+    Shop:AddElement(MacWheel)
     
-    MacPointerTooltip = UIElements.Label:new("A overrated\nupgrade", {250, 400}, {0, 0}, {0.3, 1, 0.3})
-    MacPointerLable = (UIElements.Label:new("Cost:" .. MacPointerCost, {75, 510}, {0, 0}, {0.3, 1, 0.3}))
+    MacWheelTooltip = UIElements.Label:new("A UNDERRATED\nupgrade", {390, 100}, {0, 0}, {0.3, 1, 0.3})
+    MacWheelLable = (UIElements.Label:new("Cost:" .. MacWheelCost, {250, 195}, {0, 0}, {0.3, 1, 0.3}))
 
-    Shop:AddElement(MacPointerTooltip)
-    Shop:AddElement(MacPointerLable)
+    Shop:AddElement(MacWheelTooltip)
+    Shop:AddElement(MacWheelLable)
+
+    Shop:AddElement(BasicTooltip)
 end
 
 function FransShop.Update()
     Balance.Text = "Clicks: " .. math.floor(money)
-    Basic_Cost_Lable.Text = "Cost:" .. basic_cost
-    Swarm_Cost_Lable.Text = "Cost:" .. swarm_cost
-    MacPointerLable.Text = "Cost:" .. MacPointerCost
+    Basic_Cost_Lable.Text = "Cost:" .. math.floor(basic_cost)
+    Swarm_Cost_Lable.Text = "Cost:" .. math.floor(swarm_cost)
+    MacPointerLable.Text = "Cost:" .. math.floor(MacPointerCost)
+    MacWheelLable.Text = "Cost:" .. math.floor(MacWheelCost)
 
     BasicTooltip.Text = ""
     SwarmTooltip.Text = ""
     MacPointerTooltip.Text = ""
+    MacWheelTooltip.Text = ""
 
     Buyclickerpower:IsTriggered(function ()
         buyitem("clickerpower")
@@ -74,7 +76,6 @@ function FransShop.Update()
 
     Buyclickerpower:Hover(function ()
         BasicTooltip.Text = " An upgrade that\n '  '"
-        print("Hovering")
     end, {Pos2D = {20, 0}, Scale2D = {125, 125}})
 
     BuySwarm:IsTriggered(function ()
@@ -83,37 +84,41 @@ function FransShop.Update()
 
     BuySwarm:Hover(function ()
         SwarmTooltip.Text = "A MID upgrade"
-        print("Hovering")
+
+    end, {Pos2D = {20, 0}, Scale2D = {125, 125}})
+    MacPointer:IsTriggered(function ()
+        buyitem("MacPointer")
     end, {Pos2D = {20, 0}, Scale2D = {125, 125}})
 
     MacPointer:Hover(function ()
         MacPointerTooltip.Text = "A overrated\nupgrade"
-        print("Hovering")
     end, {Pos2D = {20, 0}, Scale2D = {125, 125}})
 
-    MacPointer:IsTriggered(function ()
-        buyitem("MP")
+    MacWheel:IsTriggered(function ()
+        buyitem("MouseWheel")
+    end, {Pos2D = {20, 0}, Scale2D = {125, 125}})
+    
+    MacWheel:Hover(function ()
+        MacWheelTooltip.Text = "A GOATED\nupgrade"
     end, {Pos2D = {20, 0}, Scale2D = {125, 125}})
 end
 
 function buyitem(ItemType)
     print("Buying item")
-    if ItemType == "MP" then
-        if money >= MacPointerCost then
-            money = money - MacPointerCost
-            clickerpower = clickerpower + 2
-            basic_cost = MacPointerCost * 3 - 2
-        else
-            print("Not enough money")
-        end
-    end
     if ItemType == "clickerpower" then
         if money >= basic_cost then
             money = money - basic_cost
             clickerpower = clickerpower + 1
-            basic_cost = basic_cost * 3 - 2
+            basic_cost = basic_cost *  2.3
         else
             print("Not enough money")
+        end
+    end
+    if ItemType == "MouseWheel" then
+        if money >= MacWheelCost then
+            money = money - MacWheelCost
+            MacWheelCost = math.floor(MacWheelCost * 1.2)
+            cps = cps + 2
         end
     end
     if ItemType == "cps" then
@@ -121,6 +126,15 @@ function buyitem(ItemType)
             money = money - swarm_cost
             swarm_cost = math.floor(swarm_cost * 1.5)
             cps = cps + 0.5
+        else
+            print("Not enough money")
+        end
+    end
+    if ItemType == "MacPointer" then
+        if money >= MacPointerCost then
+            money = money - MacPointerCost
+            clickerpower = clickerpower + 2
+            MacPointerCost = MacPointerCost * 1.75
         else
             print("Not enough money")
         end

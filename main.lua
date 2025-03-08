@@ -5,7 +5,7 @@ function love.load()
     clickerpower = 0.7
     cps = 0.5
     timer = 0
-    money = 0
+    money = 150
     Cclock = 0
     isup = false
     basic_cost = 50
