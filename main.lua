@@ -46,7 +46,7 @@ function love.load()
     Shop:AddElement(BuySwarm)
 
     
-    CalcImage = UIElements.Image:new(love.graphics.newImage("Phone.png"), {300, 150}, {1,1})
+    CalcImage = UIElements.Image:new(love.graphics.newImage("calc.png"), {200, 50}, {0.4,0.4})
     Calc = UIElements.Imagebutton:new(CalcImage)
     Game:AddElement(Calc)
 
@@ -109,7 +109,7 @@ function funges()
     Calc:IsTriggered(function ()
         money = money + clickerpower
         print(money)
-    end, {Pos2D = {0, 0}, Scale2D = {220 ,300}})
+    end, {Pos2D = {75, 0}, Scale2D = {345,470}})
 
     Shopbutton:IsTriggered(function ()
         Shop:SetActiveState(not Shop.IsActive)
