@@ -142,7 +142,7 @@ function buyitem(ItemType)
         if money >= basic_cost then
             money = money - basic_cost
             clickerpower = clickerpower + 1
-            basic_cost = basic_cost * 2 - 30
+            basic_cost = basic_cost * 3 - 2
         else
             print("Not enough money")
         end
