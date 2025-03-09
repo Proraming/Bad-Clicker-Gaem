@@ -50,9 +50,11 @@ function UIElements.Imagebutton:new(image,IsActive)
 end
 
 function UIElements.Imagebutton:IsTriggered(func,colider)
+    if self.IsActive == false then return end
+
     MX = love.mouse.getX()
     MY = love.mouse.getY()
-    if love.mouse.isDown(1) and self.IsActive == true and colider and isup == false then
+    if love.mouse.isDown(1) and colider and isup == false then
         if (MX > self.image.Pos2D[1] + colider.Pos2D[1] and MX < self.image.Pos2D[1] + colider.Scale2D[1]) and MY > self.image.Pos2D[2] + colider.Pos2D[2]and MY < self.image.Pos2D[2] + colider.Scale2D[2] then
             print("Triggered")
             love.graphics.setColor(1, 0, 0)
