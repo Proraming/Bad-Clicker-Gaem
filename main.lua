@@ -1,5 +1,6 @@
 require "UI"
 require "Shop"
+require "Save"
 
 function love.load()
     clickerpower = 0.7
@@ -35,9 +36,22 @@ function love.load()
     ExitIcon = UIElements.Image:new(love.graphics.newImage("Exiticon.png"), {720, 0}, {0.2,0.2})
     Shopbutton = UIElements.Imagebutton:new(ShopIcon)
 
+    SaveIcon = UIElements.Image:new(love.graphics.newImage('SaveIcon.png'),{710,500},{.25,.25})
+    SaveButton = UIElements.Imagebutton:new(SaveIcon)
+    Game:AddElement(SaveButton)
+
     font = love.graphics.newFont("Sigmar-Regular.ttf",28)
     love.graphics.setFont(font)
     FransShop.Load()
+    
+    Savefile = Save.LoadSave()
+    cps = Savefile.cps
+    MacWheelCost = Savefile.MacWheelCost
+    swarm_cost = Savefile.swarm_cost
+    money = Savefile.money
+    MacPointerCost = Savefile.MacPointerCost
+    clickerpower = Savefile.clickerpower
+    basic_cost = Savefile.clickerpower
 end
 
 function love.update()
@@ -77,7 +91,20 @@ function funges()
         else
             Shopbutton.image = ExitIcon
         end
-    end, {Pos2D = {0, 0}, Scale2D = {100, 95}})
+    end, {Pos2D = {0, 0}, Scale2D = {100, 85}})
+
+    SaveButton:IsTriggered(function () --TODO make it dictonary
+        Save.SaveGame({
+            cps = cps,
+            MacWheelCost = MacWheelCost,
+            swarm_cost = swarm_cost,
+            money = money,
+            MacPointerCost = MacPointerCost,
+            clickerpower = clickerpower,
+            basic_cost = basic_cost,
+        })
+        
+    end, {Pos2D = {0,0}, Scale2D = {100, 95}})
 
     if not love.mouse.isDown(1) then
         isup = false

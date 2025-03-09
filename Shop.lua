@@ -4,9 +4,11 @@ FransShop = {}
 
 
 function FransShop.Load()
+    Background = UIElements.Image:new(love.graphics.newImage("background2.png"),{0,0},{1,1})
     Shop = UIElements.Frame:new()
     Shop:SetActiveState(false)
 
+    Shop:AddElement(Background)
     FransShopLable = (UIElements.Label:new("Frans shop", {400, 20}, {0, 0}, {0.3, 1, 0.3}))
     Shop:AddElement(FransShopLable)
 
@@ -69,38 +71,40 @@ function FransShop.Update()
     SwarmTooltip.Text = ""
     MacPointerTooltip.Text = ""
     MacWheelTooltip.Text = ""
-
-    Buyclickerpower:IsTriggered(function ()
-        buyitem("clickerpower")
-    end, {Pos2D = {-10, 0}, Scale2D = {100, 95}})
-
-    Buyclickerpower:Hover(function ()
-        BasicTooltip.Text = " An upgrade that\n '  '"
-    end, {Pos2D = {20, 0}, Scale2D = {125, 125}})
-
-    BuySwarm:IsTriggered(function ()
-        buyitem("cps")
-    end, {Pos2D = {20, 0}, Scale2D = {125, 125}})
-
-    BuySwarm:Hover(function ()
-        SwarmTooltip.Text = "A MID upgrade"
-
-    end, {Pos2D = {20, 0}, Scale2D = {125, 125}})
-    MacPointer:IsTriggered(function ()
-        buyitem("MacPointer")
-    end, {Pos2D = {20, 0}, Scale2D = {125, 125}})
-
-    MacPointer:Hover(function ()
-        MacPointerTooltip.Text = "A overrated\nupgrade"
-    end, {Pos2D = {20, 0}, Scale2D = {125, 125}})
-
-    MacWheel:IsTriggered(function ()
-        buyitem("MouseWheel")
-    end, {Pos2D = {20, 0}, Scale2D = {125, 125}})
     
-    MacWheel:Hover(function ()
-        MacWheelTooltip.Text = "A GOATED\nupgrade"
-    end, {Pos2D = {20, 0}, Scale2D = {125, 125}})
+    if Shop.IsActive == true then
+        Buyclickerpower:IsTriggered(function ()
+            buyitem("clickerpower")
+        end, {Pos2D = {-10, 0}, Scale2D = {100, 95}})
+
+        Buyclickerpower:Hover(function ()
+            BasicTooltip.Text = " An upgrade that\n '  '"
+        end, {Pos2D = {20, 0}, Scale2D = {125, 125}})
+
+        BuySwarm:IsTriggered(function ()
+            buyitem("cps")
+        end, {Pos2D = {20, 0}, Scale2D = {125, 125}})
+
+        BuySwarm:Hover(function ()
+            SwarmTooltip.Text = "A MID upgrade"
+
+        end, {Pos2D = {20, 0}, Scale2D = {125, 125}})
+        MacPointer:IsTriggered(function ()
+            buyitem("MacPointer")
+        end, {Pos2D = {20, 0}, Scale2D = {125, 125}})
+
+        MacPointer:Hover(function ()
+            MacPointerTooltip.Text = "A overrated\nupgrade"
+        end, {Pos2D = {20, 0}, Scale2D = {125, 125}})
+
+        MacWheel:IsTriggered(function ()
+            buyitem("MouseWheel")
+        end, {Pos2D = {20, 0}, Scale2D = {125, 125}})
+        
+        MacWheel:Hover(function ()
+            MacWheelTooltip.Text = "A GOATED\nupgrade"
+        end, {Pos2D = {20, 0}, Scale2D = {125, 125}})
+    end
 end
 
 function buyitem(ItemType)
