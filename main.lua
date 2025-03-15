@@ -32,7 +32,7 @@ function love.load()
     Calc = UIElements.Imagebutton:new(CalcImage)
     Game:AddElement(Calc)
 
-    ShopIcon = UIElements.Image:new(love.graphics.newImage("src/assets/icons/Shopicon.png"), {720, 0}, {0.2,0.2})
+    ShopIcon = UIElements.Image:new(love.graphics.newImage("src/assets/icons/ShopIcon.png"), {720, 0}, {0.2,0.2})
     ExitIcon = UIElements.Image:new(love.graphics.newImage("src/assets/icons/Exiticon.png"), {720, 0}, {0.2,0.2})
     Shopbutton = UIElements.Imagebutton:new(ShopIcon)
 
