@@ -1,6 +1,6 @@
-require "lib.UI"
-require "game.Shop"
-require "lib.Save"
+require "src.lib.UI"
+require "src.game.Shop"
+require "src.lib.Save"
 
 function love.load()
     clickerpower = 0.7
