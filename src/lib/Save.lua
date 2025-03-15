@@ -1,4 +1,4 @@
-require "SaveFile"
+require "lib.SaveFile"
 
 Save = {}
 
@@ -7,10 +7,9 @@ function Save.LoadSave()
 end
 
 function Save.SaveGame(Player)
-    file = io.open("SaveFile.lua",'w')
+    file = io.open("src/lib/SaveFile.lua",'w')
     file:write(
     "Save = {}\n"..
-    "--REMINDER DO NOT OFFSET PLAYER AT ALL\n"..
     " \n"..
     "Player = {\n"..
     "    cps = " .. Player.cps..",".."\n"..
@@ -22,6 +21,8 @@ function Save.SaveGame(Player)
     "    basic_cost = " .. Player.basic_cost..",".."\n"..
     "}\n"..
     "return Player")
+    file:close()
+    print("Game saved")
 end
 
 return Save

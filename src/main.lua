@@ -1,6 +1,6 @@
-require "UI"
-require "Shop"
-require "Save"
+require "lib.UI"
+require "game.Shop"
+require "lib.Save"
 
 function love.load()
     clickerpower = 0.7
@@ -14,13 +14,13 @@ function love.load()
 
     Game = UIElements.Frame:new()
     Game:SetActiveState(true)
-    Cash_icon = UIElements.Image:new(love.graphics.newImage("clicker.png"), {10, 10}, {0.125, 0.125})
+    Cash_icon = UIElements.Image:new(love.graphics.newImage("assets/icons/clicker.png"), {10, 10}, {0.125, 0.125})
     Cash_display = UIElements.Label:new(": " .. money, {90, 10}, {0, 50}, {0, 0, 1})
 
     Game:AddElement(Cash_display)
     Game:AddElement(Cash_icon)
 
-    Cpsicon = UIElements.Image:new(love.graphics.newImage("swarm.png"), {0, 60}, {0.18/4.8,0.18/4.8})
+    Cpsicon = UIElements.Image:new(love.graphics.newImage("assets/icons/swarm.png"), {0, 60}, {0.18/4.8,0.18/4.8})
 
     Game:AddElement(Cpsicon)
     Game:AddElement(UIElements.Label:new(": " .. cps, {90, 65}, {0, 50}, {0, 0, 1}))
@@ -28,19 +28,19 @@ function love.load()
     
 
     
-    CalcImage = UIElements.Image:new(love.graphics.newImage("calc.png"), {200, 50}, {0.4,0.4})
+    CalcImage = UIElements.Image:new(love.graphics.newImage("assets/clickers/calc.png"), {200, 50}, {0.4,0.4})
     Calc = UIElements.Imagebutton:new(CalcImage)
     Game:AddElement(Calc)
 
-    ShopIcon = UIElements.Image:new(love.graphics.newImage("Shopicon.png"), {720, 0}, {0.2,0.2})
-    ExitIcon = UIElements.Image:new(love.graphics.newImage("Exiticon.png"), {720, 0}, {0.2,0.2})
+    ShopIcon = UIElements.Image:new(love.graphics.newImage("assets/icons/Shopicon.png"), {720, 0}, {0.2,0.2})
+    ExitIcon = UIElements.Image:new(love.graphics.newImage("assets/icons/Exiticon.png"), {720, 0}, {0.2,0.2})
     Shopbutton = UIElements.Imagebutton:new(ShopIcon)
 
-    SaveIcon = UIElements.Image:new(love.graphics.newImage('SaveIcon.png'),{710,500},{.25,.25})
+    SaveIcon = UIElements.Image:new(love.graphics.newImage('assets/icons/SaveIcon.png'),{710,500},{.25,.25})
     SaveButton = UIElements.Imagebutton:new(SaveIcon)
     Game:AddElement(SaveButton)
 
-    font = love.graphics.newFont("Sigmar-Regular.ttf",28)
+    font = love.graphics.newFont("assets/Sigmar-Regular.ttf",28)
     love.graphics.setFont(font)
     FransShop.Load()
     
@@ -51,7 +51,7 @@ function love.load()
     money = Savefile.money
     MacPointerCost = Savefile.MacPointerCost
     clickerpower = Savefile.clickerpower
-    basic_cost = Savefile.clickerpower
+    basic_cost = Savefile.basic_cost
 end
 
 function love.update()

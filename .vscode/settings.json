@@ -1,5 +1,10 @@
 {
     "Lua.diagnostics.globals": [
-        "buyitem"
-    ]
+        "buyitem",
+        "love"
+    ],
+    "Lua.diagnostics.disable": [
+        "undefined-global"
+    ],
+    "pixelbyte.love2d.srcDir": "./src",
 }
