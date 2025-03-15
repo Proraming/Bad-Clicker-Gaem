@@ -14,13 +14,13 @@ function love.load()
 
     Game = UIElements.Frame:new()
     Game:SetActiveState(true)
-    Cash_icon = UIElements.Image:new(love.graphics.newImage("assets/icons/clicker.png"), {10, 10}, {0.125, 0.125})
+    Cash_icon = UIElements.Image:new(love.graphics.newImage("src/assets/icons/clicker.png"), {10, 10}, {0.125, 0.125})
     Cash_display = UIElements.Label:new(": " .. money, {90, 10}, {0, 50}, {0, 0, 1})
 
     Game:AddElement(Cash_display)
     Game:AddElement(Cash_icon)
 
-    Cpsicon = UIElements.Image:new(love.graphics.newImage("assets/icons/swarm.png"), {0, 60}, {0.18/4.8,0.18/4.8})
+    Cpsicon = UIElements.Image:new(love.graphics.newImage("src/assets/icons/swarm.png"), {0, 60}, {0.18/4.8,0.18/4.8})
 
     Game:AddElement(Cpsicon)
     Game:AddElement(UIElements.Label:new(": " .. cps, {90, 65}, {0, 50}, {0, 0, 1}))
@@ -28,19 +28,19 @@ function love.load()
     
 
     
-    CalcImage = UIElements.Image:new(love.graphics.newImage("assets/clickers/calc.png"), {200, 50}, {0.4,0.4})
+    CalcImage = UIElements.Image:new(love.graphics.newImage("src/assets/clickers/calc.png"), {200, 50}, {0.4,0.4})
     Calc = UIElements.Imagebutton:new(CalcImage)
     Game:AddElement(Calc)
 
-    ShopIcon = UIElements.Image:new(love.graphics.newImage("assets/icons/Shopicon.png"), {720, 0}, {0.2,0.2})
-    ExitIcon = UIElements.Image:new(love.graphics.newImage("assets/icons/Exiticon.png"), {720, 0}, {0.2,0.2})
+    ShopIcon = UIElements.Image:new(love.graphics.newImage("src/assets/icons/Shopicon.png"), {720, 0}, {0.2,0.2})
+    ExitIcon = UIElements.Image:new(love.graphics.newImage("src/assets/icons/Exiticon.png"), {720, 0}, {0.2,0.2})
     Shopbutton = UIElements.Imagebutton:new(ShopIcon)
 
-    SaveIcon = UIElements.Image:new(love.graphics.newImage('assets/icons/SaveIcon.png'),{710,500},{.25,.25})
+    SaveIcon = UIElements.Image:new(love.graphics.newImage('src/assets/icons/SaveIcon.png'),{710,500},{.25,.25})
     SaveButton = UIElements.Imagebutton:new(SaveIcon)
     Game:AddElement(SaveButton)
 
-    font = love.graphics.newFont("assets/Sigmar-Regular.ttf",28)
+    font = love.graphics.newFont("src/assets/Sigmar-Regular.ttf",28)
     love.graphics.setFont(font)
     FransShop.Load()
     

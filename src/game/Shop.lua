@@ -4,7 +4,7 @@ FransShop = {}
 
 
 function FransShop.Load()
-    Background = UIElements.Image:new(love.graphics.newImage("assets/Background/background2.png"),{0,0},{1,1})
+    Background = UIElements.Image:new(love.graphics.newImage("src/assets/Background/background2.png"),{0,0},{1,1})
     Shop = UIElements.Frame:new()
     Shop:SetActiveState(false)
 
@@ -20,13 +20,13 @@ function FransShop.Load()
     Swarm_Cost_Lable = (UIElements.Label:new("Cost:" .. swarm_cost, {75, 350}, {0, 0}, {0.3, 1, 0.3}))
     Shop:AddElement(Swarm_Cost_Lable)
     
-    ClickerPowerImage = UIElements.Image:new(love.graphics.newImage("assets/icons/clicker.png"), {20, 75}, {0.25, 0.25})
+    ClickerPowerImage = UIElements.Image:new(love.graphics.newImage("src/assets/icons/clicker.png"), {20, 75}, {0.25, 0.25})
     Buyclickerpower = UIElements.Imagebutton:new(ClickerPowerImage)
     Shop:AddElement(Buyclickerpower)
 
     BasicTooltip = UIElements.Label:new("    An upgrade that\n '   '", {280, 100}, {0, 0}, {0.3, 1, 0.3})
     
-    SwarmImage = UIElements.Image:new(love.graphics.newImage("assets/icons/swarm.png"), {-5, 200}, {1/12.5, 1/12.5})
+    SwarmImage = UIElements.Image:new(love.graphics.newImage("src/assets/icons/swarm.png"), {-5, 200}, {1/12.5, 1/12.5})
     BuySwarm = UIElements.Imagebutton:new(SwarmImage)
     Shop:AddElement(BuySwarm)
     
@@ -35,7 +35,7 @@ function FransShop.Load()
 
     MacPointerCost = 500
 
-    MacPointerIcon = UIElements.Image:new(love.graphics.newImage("assets/icons/MacClicker.png"), {25, 380}, {0.3, 0.3})
+    MacPointerIcon = UIElements.Image:new(love.graphics.newImage("src/assets/icons/MacClicker.png"), {25, 380}, {0.3, 0.3})
     MacPointer = UIElements.Imagebutton:new(MacPointerIcon)
     Shop:AddElement(MacPointer)
     
@@ -47,7 +47,7 @@ function FransShop.Load()
 
     MacWheelCost = 100
 
-    WheelIcon = UIElements.Image:new(love.graphics.newImage("assets/icons/Wheel.png"), {200, 75}, {0.25, 0.25})
+    WheelIcon = UIElements.Image:new(love.graphics.newImage("src/assets/icons/Wheel.png"), {200, 75}, {0.25, 0.25})
     MacWheel = UIElements.Imagebutton:new(WheelIcon)
     Shop:AddElement(MacWheel)
     
