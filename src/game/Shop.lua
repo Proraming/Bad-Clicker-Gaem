@@ -47,7 +47,7 @@ function FransShop.Load()
 
     MacWheelCost = 100
 
-    WheelIcon = UIElements.Image:new(love.graphics.newImage("src/assets/icons/Wheel.png"), {200, 75}, {0.25, 0.25})
+    WheelIcon = UIElements.Image:new(love.graphics.newImage("src/assets/icons/wheel.png"), {200, 75}, {0.25, 0.25})
     MacWheel = UIElements.Imagebutton:new(WheelIcon)
     Shop:AddElement(MacWheel)
     
